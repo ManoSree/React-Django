@@ -22,9 +22,16 @@
 
 from django.db import models
 
-class Post(models.Model):
-    title= models.CharField(max_length=200)
-    body=models.TextField()
+class Department(models.Model):
+    dept = models.CharField(max_length=30)
     
     def __str__(self):
-        return "Post:{self.title}"
+        return self.dept
+    
+class Employee(models.Model):
+    E_id = models.AutoField(primary_key=True)
+    E_name = models.CharField(max_length=40)
+    dept = models.ForeignKey(Department , on_delete = models.CASCADE , related_name='department')
+    salary = models.DecimalField(max_digits=10 , decimal_places=2)
+    native = models.CharField(max_length=30)
+     

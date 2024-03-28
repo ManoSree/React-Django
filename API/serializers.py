@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Department , Employee
 
-class PostSerializer(serializers.ModelSerializer):
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Post
-        fields=('id','title','body')
+        model = Department
+        field='__all__'
+        
+class EmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        field = '__all__'

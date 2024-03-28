@@ -1,7 +1,10 @@
 from django.urls import path
-from rest_framework.routers import DefaultRouter
-from .views import PostViewSet
+from .views import EmployeeView, DepartmentView
 
-post_router = DefaultRouter()
-post_router.register('posts',PostViewSet
-                     )
+urlpatterns = [
+    path('employees/', EmployeeView.as_view(), name='All Employees'),
+    path('employees/<int:E_id>', EmployeeView.as_view(), name='Employee'),
+    path('employees/dept=<int:dept>', EmployeeView.as_view(), name="Employee by view"),
+    
+    path('departments/', DepartmentView.as_view(), name='Department')
+]
